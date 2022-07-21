@@ -41,10 +41,44 @@ function checkText(text, voc = vocabulary) {
       return res;
     }, []);
 
+    result.commonLevel = { a: 0, b: 0, c: 0 };
+
+    result.grade.forEach((g) => {
+      switch (g.cefr) {
+        case 'a1':
+        case 'a2':
+          result.commonLevel.a += g.precent;
+          break;
+        case 'b1':
+        case 'b2':
+          result.commonLevel.b += g.precent;
+          break;
+        case 'c1':
+        case 'c2':
+          result.commonLevel.c += g.precent;
+          break;
+        default:
+          break;
+      }
+    });
+
+    const { a, b, c } = result.commonLevel;
+
+    result.complexity =
+      (c >= 10 && 'advanced') ||
+      (b >= 20 && 'intermediate') ||
+      (a >= 70 && 'begginer');
+
     return result;
   }
 
   return null;
 }
+
+console.log(
+  checkText(
+    'Hello his is test my name is john dwongrade up cute man wonderful day'
+  )
+);
 
 module.exports = checkText;

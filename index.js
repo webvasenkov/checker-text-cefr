@@ -46,4 +46,4 @@ function checkText(text, voc = vocabulary) {
   return null;
 }
 
-module.export = checkText;
+module.exports = checkText;

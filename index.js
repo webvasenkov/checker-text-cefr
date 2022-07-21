@@ -65,9 +65,9 @@ function checkText(text, voc = vocabulary) {
     const { a, b, c } = result.commonLevel;
 
     result.complexity =
-      (c >= 10 && 'advanced') ||
-      (b >= 20 && 'intermediate') ||
-      (a >= 70 && 'begginer');
+      (c >= 5 && 'advanced') ||
+      (b >= 15 && 'intermediate') ||
+      (a >= 80 && 'begginer');
 
     return result;
   }

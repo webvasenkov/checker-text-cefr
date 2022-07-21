@@ -7,38 +7,39 @@ const vocabulary = [...voc1, ...voc2];
 //   return text.replace(/[^\w\s\']|_/g, '').replace(/\s+/g, ' ');
 // }
 
-function objectWithCount(mainObj, objName, key) {
-  const obj = mainObj[objName] ? mainObj[objName] : (mainObj[objName] = {});
-  obj[key] ? obj[key]++ : (obj[key] = 1);
-}
+const precentage = (total, value) => Math.round((value / total) * 100);
 
 function checkText(text, voc = vocabulary) {
   const words = text.split(' ');
+  const vocWords = [];
 
-  const wordsFound = words.map((word) => {
-    const idx = vocabulary.findIndex((w) => w.word == word);
-    return !!~idx ? vocabulary[idx] : null;
+  words.forEach((w) => {
+    const foundWord = voc.find((vw) => vw.word == w);
+    foundWord && vocWords.push(foundWord);
   });
 
-  if (wordsFound.length) {
-    const result = wordsFound.reduce((res, word) => {
-      if (word) {
-        const wordInfo = { word: word.word, pos: word.pos };
-        res.words ? res.words.push(wordInfo) : (res.words = [wordInfo]);
+  if (vocWords.length) {
+    const result = {};
+    result.words = vocWords;
+    result.totalWords = vocWords.length;
 
-        res.total = words.length;
-        objectWithCount(res, 'grade', word.cefr);
-        // objectWithCount(res, 'pos', word.pos);
+    result.grade = vocWords.reduce((res, w) => {
+      const wordByCefr = res.find((g) => g.cefr == w.cefr);
+
+      if (wordByCefr) {
+        wordByCefr.count++;
+        wordByCefr.precent = precentage(result.totalWords, wordByCefr.count);
       } else {
-        objectWithCount(res, 'grade', 'unclassified');
+        const grade = {
+          cefr: w.cefr,
+          count: 1,
+          precent: precentage(result.totalWords, 1),
+        };
+        res = [...res, grade];
       }
 
       return res;
-    }, {});
-
-    result.complexity = Object.keys(result.grade)
-      .filter((g) => g !== 'unclassified')
-      .reduce((a, b) => (result.grade[a] > result.grade[b] ? a : b));
+    }, []);
 
     return result;
   }

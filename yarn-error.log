@@ -1,0 +1,47 @@
+Arguments: 
+  /home/vd/.nvm/versions/node/v16.14.2/bin/node /home/vd/.yarn/bin/yarn.js add -D @typescript/node
+
+PATH: 
+  /home/vd/.yarn/bin:/home/vd/.config/yarn/global/node_modules/.bin:/home/vd/Android/Sdk/tools:/home/vd/Android/Sdk/tools/bin:/home/vd/Android/Sdk/platform-tools:/home/vd/.emacs.d/bin:/home/vd/.yarn/bin:/home/vd/.config/yarn/global/node_modules/.bin:/home/vd/Android/Sdk/tools:/home/vd/Android/Sdk/tools/bin:/home/vd/Android/Sdk/platform-tools:/home/vd/.emacs.d/bin:/home/vd/.nvm/versions/node/v16.14.2/bin:/sbin:/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/sbin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  16.14.2
+
+Platform: 
+  linux x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/@typescript%2fnode: Not found
+      at Request.params.callback [as _callback] (/home/vd/.yarn/lib/cli.js:66145:18)
+      at Request.self.callback (/home/vd/.yarn/lib/cli.js:140890:22)
+      at Request.emit (node:events:526:28)
+      at Request.<anonymous> (/home/vd/.yarn/lib/cli.js:141862:10)
+      at Request.emit (node:events:526:28)
+      at IncomingMessage.<anonymous> (/home/vd/.yarn/lib/cli.js:141784:12)
+      at Object.onceWrapper (node:events:645:28)
+      at IncomingMessage.emit (node:events:538:35)
+      at endReadableNT (node:internal/streams/readable:1345:12)
+      at processTicksAndRejections (node:internal/process/task_queues:83:21)
+
+npm manifest: 
+  {
+    "name": "check-text-cefr",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

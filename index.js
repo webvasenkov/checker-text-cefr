@@ -75,10 +75,4 @@ function checkText(text, voc = vocabulary) {
   return null;
 }
 
-console.log(
-  checkText(
-    'Hello his is test my name is john dwongrade up cute man wonderful day'
-  )
-);
-
 module.exports = checkText;

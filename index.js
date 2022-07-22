@@ -3,16 +3,13 @@ const voc2 = require('./vocabulary/eng/cefrj.json');
 
 const vocabulary = [...voc1, ...voc2];
 
-// function punctuationLess(text) {
-//   return text.replace(/[^\w\s\']|_/g, '').replace(/\s+/g, ' ');
-// }
-
 const precentage = (total, value) => Math.round((value / total) * 100);
 
 function checkText(text, voc = vocabulary) {
   const words = text.split(' ');
   const vocWords = [];
 
+  // search words in vocabulary
   words.forEach((w) => {
     const foundWord = voc.find((vw) => vw.word == w);
     foundWord && vocWords.push(foundWord);
@@ -23,6 +20,7 @@ function checkText(text, voc = vocabulary) {
     result.words = vocWords;
     result.totalWords = vocWords.length;
 
+    // grade and count every word
     result.grade = vocWords.reduce((res, w) => {
       const wordByCefr = res.find((g) => g.cefr == w.cefr);
 
@@ -41,6 +39,7 @@ function checkText(text, voc = vocabulary) {
       return res;
     }, []);
 
+    // grade text complexity
     result.commonLevel = { a: 0, b: 0, c: 0 };
 
     result.grade.forEach((g) => {

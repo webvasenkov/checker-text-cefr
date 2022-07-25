@@ -5,7 +5,7 @@ const vocabulary = [...voc1, ...voc2];
 
 const precentage = (total, value) => Math.round((value / total) * 100);
 
-function checkText(text, voc = vocabulary) {
+function checkText(text, voc = vocabulary, vocName = 'Oxford Dictinoray') {
   const words = text.split(' ');
   const vocWords = [];
 
@@ -17,6 +17,7 @@ function checkText(text, voc = vocabulary) {
 
   if (vocWords.length) {
     const result = {};
+    result.vocName = vocName ?? '';
     result.words = vocWords;
     result.totalWords = vocWords.length;
 
@@ -66,7 +67,7 @@ function checkText(text, voc = vocabulary) {
     result.complexity =
       (c >= 5 && 'advanced') ||
       (b >= 15 && 'intermediate') ||
-      (a >= 80 && 'begginer');
+      (a >= 80 && 'beginner');
 
     return result;
   }

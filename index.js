@@ -75,4 +75,8 @@ function checkText(text, voc = vocabulary, vocName = 'Oxford Dictinoray') {
   return null;
 }
 
-module.exports = checkText;
+function punctuationLess(text) {
+  return text.replace(/[^\w\s\']|_/g, '').replace(/\s+/g, ' ');
+}
+
+module.exports = { checkText, punctuationLess };
